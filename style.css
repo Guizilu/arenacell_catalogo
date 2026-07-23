@@ -1,3 +1,11 @@
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -5,12 +13,26 @@ body {
     color: #333;
 }
 
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
 header {
-    background-color: #ffffff; /* fundo branco */
-    color: #ff7f00; /* texto laranja */
+    background-color: #ffffff;
+    color: #ff7f00;
     text-align: center;
-    padding: 25px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* sombra leve para destacar */
+    padding: 20px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    position: relative;
+    z-index: 10;
 }
 
 header h1 {
@@ -19,98 +41,458 @@ header h1 {
     font-weight: bold;
 }
 
+
+/* Logo do ArenaCell */
+
+header img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   CONTAINER PRINCIPAL
+========================================================= */
+
 .container {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
 }
 
-/* Menu lateral */
+
+/* =========================================================
+   MENU LATERAL
+========================================================= */
+
 .menu {
-    width: 200px; /* puxado mais para a direita */
-    background-color: #ff7f00;
+    width: 200px;
+
+    background: linear-gradient(
+        180deg,
+        #ff7f00,
+        #ff9f40
+    );
+
     padding: 20px 15px;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     gap: 12px;
-    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    background: linear-gradient(180deg, #ff7f00, #ff9f40);
-    
 }
+
+
+/* =========================================================
+   CAMPO DE PESQUISA
+========================================================= */
 
 .menu input {
-    padding: 10px;
+    width: 100%;
+
+    padding: 11px;
+
     border: none;
+
     border-radius: 6px;
+
     margin-bottom: 10px;
+
     font-size: 14px;
+
+    outline: none;
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s ease;
 }
 
-.marca {
-    width: 100px;
-    height: 100px;
-    border: none;
-    background: white;
-    cursor: pointer;
-    padding: 10px;
+
+/* Efeito ao clicar na pesquisa */
+
+.menu input:focus {
+    box-shadow:
+        0 0 0 3px rgba(0, 74, 173, 0.3);
 }
+
+
+/* =========================================================
+   BOTÕES DAS MARCAS
+========================================================= */
+
+.marca {
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #004aad;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Imagens das marcas */
 
 .marca img {
     width: 70px;
-    height: 70px;
+    height: 60px;
+
     object-fit: contain;
+
+    transition:
+        transform 0.3s ease;
 }
 
-.marca {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #004aad;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
+
+/* Efeito ao passar o mouse */
 
 .marca:hover {
     background-color: #ffffff;
+
     transform: translateX(4px);
+
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+
+/* Aumenta levemente a logo */
+
+.marca:hover img {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+========================================================= */
 
 main {
     flex: 1;
+
     padding: 30px;
+
+    overflow-x: auto;
 }
 
-/* Tabela */
+
+/* Título da marca */
+
+#tituloMarca {
+    margin-top: 0;
+
+    color: #004aad;
+
+    font-size: 26px;
+
+    border-bottom:
+        3px solid #ff7f00;
+
+    padding-bottom: 10px;
+}
+
+
+/* =========================================================
+   MENSAGEM INICIAL
+========================================================= */
+
+#conteudo > p {
+    font-size: 16px;
+
+    color: #666;
+
+    background-color: white;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =========================================================
+   TABELA
+========================================================= */
+
 #conteudo table {
     width: 100%;
+
     border-collapse: collapse;
+
     margin-top: 20px;
+
     background-color: white;
+
     border-radius: 10px;
+
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#conteudo th, #conteudo td {
+
+/* Cabeçalho e células */
+
+#conteudo th,
+#conteudo td {
     border: 1px solid #ddd;
+
     padding: 12px;
+
     text-align: center;
+
     font-size: 14px;
 }
 
+
+/* Cabeçalho da tabela */
+
 #conteudo th {
     background-color: #004aad;
+
     color: white;
+
     font-size: 15px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 2;
 }
+
+
+/* Células */
 
 #conteudo td {
     background-color: #fafafa;
+}
+
+
+/* Efeito ao passar o mouse sobre uma linha */
+
+#conteudo tbody tr:hover td {
+    background-color: #f0f5ff;
+}
+
+
+/* =========================================================
+   NOME DO MODELO
+========================================================= */
+
+#conteudo .modelo {
+    font-weight: bold;
+
+    color: #004aad;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CAMPOS DE PREÇO
+========================================================= */
+
+#conteudo input.preco {
+    width: 100px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Campo de preço selecionado */
+
+#conteudo input.preco:focus {
+    border-color: #004aad;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 74, 173, 0.15);
+}
+
+
+/* =========================================================
+   MENSAGEM DE CARREGAMENTO
+========================================================= */
+
+.carregando {
+    text-align: center;
+
+    background-color: white;
+
+    color: #004aad;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+
+    .menu {
+        width: 100%;
+
+        border-radius: 0;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        align-items: center;
+    }
+
+
+    .menu input {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .marca {
+        width: 100%;
+
+        height: 75px;
+    }
+
+
+    main {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+
+        padding: 15px;
+    }
+
+
+    header h1 {
+        font-size: 22px;
+    }
+
+
+    header img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    .menu {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding: 15px;
+    }
+
+
+    .menu input {
+        font-size: 16px;
+    }
+
+
+    .marca {
+        height: 70px;
+    }
+
+
+    .marca img {
+        width: 60px;
+        height: 50px;
+    }
+
+
+    main {
+        padding: 15px;
+    }
+
+
+    #tituloMarca {
+        font-size: 22px;
+    }
+
+
+    /* Permite rolagem horizontal
+       da tabela em celulares */
+
+    #conteudo {
+        overflow-x: auto;
+    }
+
+
+    #conteudo table {
+        min-width: 700px;
+    }
+
 }
