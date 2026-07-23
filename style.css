@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+header {
+    background-color: #ffffff; /* fundo branco */
+    color: #ff7f00; /* texto laranja */
+    text-align: center;
+    padding: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* sombra leve para destacar */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Menu lateral */
+.menu {
+    width: 200px; /* puxado mais para a direita */
+    background-color: #ff7f00;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background: linear-gradient(180deg, #ff7f00, #ff9f40);
+    
+}
+
+.menu input {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.marca {
+    width: 100px;
+    height: 100px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.marca img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.marca:hover {
+    background-color: #ffffff;
+    transform: translateX(4px);
+}
+
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Tabela */
+#conteudo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#conteudo th, #conteudo td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#conteudo th {
+    background-color: #004aad;
+    color: white;
+    font-size: 15px;
+}
+
+#conteudo td {
+    background-color: #fafafa;
+}
