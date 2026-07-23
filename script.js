@@ -278,3 +278,107 @@ document.getElementById("pesquisa").addEventListener("keyup", function() {
         linha.style.display = modelo.includes(filtro) ? "" : "none";
     });
 });
+
+// Salvar preço no localStorage
+function salvarPreco(marca, modelo, peca, valor) {
+    const chave = `preco_${marca}_${modelo}_${peca}`;
+    localStorage.setItem(chave, valor);
+}
+
+// Buscar preço salvo no localStorage
+function buscarPreco(marca, modelo, peca) {
+    const chave = `preco_${marca}_${modelo}_${peca}`;
+    return localStorage.getItem(chave) || "";
+}
+
+
+// Função para abrir a marca
+function abrirMarca(marca) {
+    const titulo = document.getElementById("tituloMarca");
+    const conteudo = document.getElementById("conteudo");
+
+    titulo.innerHTML = marca.toUpperCase();
+
+    let html = `
+        <table id="tabelaModelos">
+            <tr>
+                <th>Modelo</th>
+                <th>Frontal</th>
+                <th>Placa de Carga</th>
+                <th>Bateria</th>
+                <th>FPC</th>
+            </tr>
+    `;
+
+    celulares[marca].forEach(modelo => {
+
+        const frontal = buscarPreco(marca, modelo, "frontal");
+        const placa = buscarPreco(marca, modelo, "placa");
+        const bateria = buscarPreco(marca, modelo, "bateria");
+        const fpc = buscarPreco(marca, modelo, "fpc");
+
+        html += `
+            <tr>
+                <td class="modelo">${modelo}</td>
+
+                <td>
+                    <input 
+                        type="text" 
+                        placeholder="R$"
+                        value="${frontal}"
+                        onchange="salvarPreco('${marca}', '${modelo}', 'frontal', this.value)"
+                    >
+                </td>
+
+                <td>
+                    <input 
+                        type="text" 
+                        placeholder="R$"
+                        value="${placa}"
+                        onchange="salvarPreco('${marca}', '${modelo}', 'placa', this.value)"
+                    >
+                </td>
+
+                <td>
+                    <input 
+                        type="text" 
+                        placeholder="R$"
+                        value="${bateria}"
+                        onchange="salvarPreco('${marca}', '${modelo}', 'bateria', this.value)"
+                    >
+                </td>
+
+                <td>
+                    <input 
+                        type="text" 
+                        placeholder="R$"
+                        value="${fpc}"
+                        onchange="salvarPreco('${marca}', '${modelo}', 'fpc', this.value)"
+                    >
+                </td>
+            </tr>
+        `;
+    });
+
+    html += "</table>";
+
+    conteudo.innerHTML = html;
+}
+
+
+// Função de pesquisa
+document.getElementById("pesquisa").addEventListener("keyup", function() {
+
+    const filtro = this.value.toLowerCase();
+
+    const linhas = document.querySelectorAll("#tabelaModelos tr");
+
+    linhas.forEach((linha, index) => {
+
+        if (index === 0) return;
+
+        const modelo = linha.querySelector(".modelo").textContent.toLowerCase();
+
+        linha.style.display = modelo.includes(filtro) ? "" : "none";
+    });
+});
